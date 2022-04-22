@@ -33,6 +33,8 @@ static NSString * const CodingKey_DeviceType = @"8";
     newAppInfo.screenHeight = self.screenHeight;
     newAppInfo.screenScale = self.screenScale;
     newAppInfo.appInfoIdentifier = self.appInfoIdentifier;
+    newAppInfo.deviceColor = self.deviceColor;
+    newAppInfo.marketingName = self.marketingName;
     return newAppInfo;
 }
 
@@ -58,6 +60,8 @@ static NSString * const CodingKey_DeviceType = @"8";
         self.screenScale = [aDecoder decodeDoubleForKey:@"screenScale"];
         self.appInfoIdentifier = [aDecoder decodeIntegerForKey:@"appInfoIdentifier"];
         self.shouldUseCache = [aDecoder decodeBoolForKey:@"shouldUseCache"];
+        self.deviceColor = @([aDecoder decodeIntegerForKey:@"deviceColor"]);
+        self.marketingName = [aDecoder decodeObjectForKey:@"marketingName"];
     }
     return self;
 }
@@ -90,6 +94,8 @@ static NSString * const CodingKey_DeviceType = @"8";
     [aCoder encodeDouble:self.screenScale forKey:@"screenScale"];
     [aCoder encodeInteger:self.appInfoIdentifier forKey:@"appInfoIdentifier"];
     [aCoder encodeBool:self.shouldUseCache forKey:@"shouldUseCache"];
+    [aCoder encodeInteger:[self.deviceColor integerValue] forKey:@"deviceColor"];
+    [aCoder encodeObject:self.marketingName forKey:@"marketingName"];
 }
 
 + (BOOL)supportsSecureCoding {

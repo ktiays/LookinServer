@@ -47,6 +47,10 @@ typedef NS_ENUM(NSInteger, LookinAppInfoDevice) {
 /// 是几倍的屏幕
 @property(nonatomic, assign) double screenScale;
 
+@property (nonatomic, copy, nullable) NSNumber *deviceColor;
+
+@property (nonatomic, copy, nullable) NSString *marketingName;
+
 - (BOOL)isEqualToAppInfo:(LookinAppInfo *)info;
 
 #if TARGET_OS_IPHONE
